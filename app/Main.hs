@@ -54,5 +54,3 @@ stackedSquares colors =
   . fmap square
   $ [1,2,3]
 
--- (brightColors, src') = flip runRand src   $ replicateM numWoobles $ randomColor bright LumBright
--- foldr (\d acc -> center d `atop` acc) mempty woobles
