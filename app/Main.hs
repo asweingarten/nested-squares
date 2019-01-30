@@ -35,16 +35,6 @@ squareGrid src =
     . fst
     $ randomColorSets 96 3 src
 
-randomColors :: Int -> StdGen -> ([Kolor], StdGen)
-randomColors n src = flip runRand src $ replicateM n $ randomCIELab
-
-randomColorSets :: Int -> Int -> StdGen -> ([[Kolor]], StdGen)
-randomColorSets nSet nCol src =
-  flip runRand src
-  . replicateM nSet
-  . replicateM nCol
-  $ randomCIELab
-
 stackedSquares :: [Kolor] -> Diagram B
 stackedSquares colors =
   foldr atop mempty
@@ -54,3 +44,12 @@ stackedSquares colors =
   . fmap square
   $ [1,2,3]
 
+randomColorSets :: Int -> Int -> StdGen -> ([[Kolor]], StdGen)
+randomColorSets nSet nCol src =
+  flip runRand src
+  . replicateM nSet
+  . replicateM nCol
+  $ randomCIELab
+
+randomColors :: Int -> StdGen -> ([Kolor], StdGen)
+randomColors n src = flip runRand src $ replicateM n $ randomCIELab
